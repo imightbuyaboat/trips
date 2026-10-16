@@ -6,6 +6,7 @@ import (
 	"time"
 )
 
+// timeHandler возвращает текущее UTC-время в формате RFC3339 (только GET).
 func timeHandler(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodGet {
 		w.Header().Set("Allow", http.MethodGet)
