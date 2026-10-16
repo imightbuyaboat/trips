@@ -1,3 +1,3 @@
 [submodule "libs/tg-labs"]
 	path = libs/tg-labs
-	url = https://github.com/imightbuyaboat/TG-labs.git
+	url = git@github.com:imightbuyaboat/TG-labs.git
