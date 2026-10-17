@@ -33,9 +33,21 @@ jobs:
         go install github.com/princjef/gomarkdoc/cmd/gomarkdoc@latest
         mkdir -p site
         gomarkdoc --include-unexported --output site/api.raw.md .
+
+        echo "--- generated api.raw.md ---"
+        wc -l site/api.raw.md
+        head -50 site/api.raw.md
+
+        {
+          printf -- '---\ntitle: trips\n---\n'
+          cat README.md
+          printf '\n\n---\n\n# Документация из кода\n\n'
+          cat site/api.raw.md
+        } > site/index.md
+
+        cp site/api.raw.md site/api-body.md
         { printf -- '---\ntitle: API\n---\n'; cat site/api.raw.md; } > site/api.md
-        rm site/api.raw.md
-        { printf -- '---\ntitle: trips\n---\n'; cat README.md; } > site/index.md
+        rm site/api.raw.md site/api-body.md
         printf 'theme: jekyll-theme-cayman\ntitle: trips\n' > site/_config.yml
 
     - uses: actions/configure-pages@v5
