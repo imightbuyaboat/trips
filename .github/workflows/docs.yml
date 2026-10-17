@@ -28,7 +28,7 @@ jobs:
         go-version-file: go.mod
         cache: false
 
-    - name: Generate API docs from code
+    - name: Generate API docs from code comments
       run: |
         go install github.com/princjef/gomarkdoc/cmd/gomarkdoc@latest
         mkdir -p site
